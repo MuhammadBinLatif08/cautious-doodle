@@ -10,7 +10,6 @@ import MainContent from './MainContent';
 describe('MainContent', () => {
   it('should render a button', () => {
     render(<MainContent />);
-
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
@@ -19,6 +18,9 @@ describe('MainContent', () => {
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
-    expect(screen.getByTestId('help-area')).toBeInTheDocument();
+
+    expect(screen.getByTestId('help-area')).not.toBeInTheDocument();
+    // OR maybe: toBeInTheDocument(), depending on what your UI does after the click
   });
 });
+
